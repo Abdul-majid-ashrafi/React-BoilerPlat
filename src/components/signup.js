@@ -1,33 +1,29 @@
 import React, { Component } from 'react'
 import { ref, firebaseAuth } from '../helpers/auth'
-import { Router, Link } from 'react-router';
-import Home from './home';
+import { Link } from 'react-router';
 
 
 class Register extends Component {
     constructor() {
         super();
-
         this.handleDataSubmit = this.handleDataSubmit.bind(this);
     }
-
     handleDataSubmit(data) {
-        console.log(data)
-        console.log(this.context.router)
-        this.props.router.push("/home");
-
-        // return firebaseAuth().createUserWithEmailAndPassword(data.email, data.pass)
-        //     .then((user) => {
-        //         return ref.child(`users/${user.uid}`)
-        //             .set({
-        //                 email: user.email,
-        //                 uid: user.uid,
-        //                 name: data.username,
-        //                 num: data.num
-        //             })
-        //             .then(() => console.log(user))
-        //     })
-        //     .catch((error) => alert(error.message))
+        return firebaseAuth().createUserWithEmailAndPassword(data.email, data.pass)
+            .then((user) => {
+                return ref.child(`users/${user.uid}`)
+                    .set({
+                        email: user.email,
+                        uid: user.uid,
+                        name: data.username,
+                        num: data.num
+                    })
+                    .then(() =>
+                        this.props.router.push("/home"),
+                    console.log("Yahhooooooooo", user)
+                    )
+            })
+            .catch((error) => alert(error.message))
     }
     render() {
         return (
@@ -72,7 +68,7 @@ class Form extends Component {
                     <button type="submit" className="btn btn-primary">Register</button>
                 </form>
 
-                <Link to="/aboutnested">inz home</Link>
+                <Link to="/login">Login</Link>
 
             </div>
         )
@@ -83,4 +79,3 @@ Register.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 export default Register;
-                // <span className="pull-right"><Link className="nav-link" to="/login">Login?</Link></span>

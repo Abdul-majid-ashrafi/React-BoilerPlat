@@ -13,11 +13,13 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 ReactDOM.render((
     <Router history={hashHistory}>
+
         <Route path="/home" component={Home}>
             <Route path="/homenested" component={NestedHome}></Route>
             <Route path="/aboutnested" component={NestedAbout}></Route>
         </Route>
 
+        <Route path="/login" component={Login}></Route>
         <Route path="/" component={App}>
             <IndexRoute component={SignUp} />
         </Route>
