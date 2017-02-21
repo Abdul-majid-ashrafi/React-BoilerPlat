@@ -8,12 +8,8 @@ class Home extends Component {
         return (
             <div className="App">
                 <h1>Hello Home</h1>
-                <Link to="/homenested">
-                    Home
-                </Link>
-                <Link to="/aboutnested">
-                    About
-                 </Link>
+                <Link to="/homenested">Home</Link>
+                <Link to="/aboutnested">About</Link>
                 {this.props.children}
             </div>
         );

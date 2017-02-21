@@ -9,25 +9,20 @@ import NestedAbout from './components/aboutnestedroute';
 // import Nav from './components/nav.js';
 import './index.css';
 // import ReactRouter from 'react-router';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 ReactDOM.render((
     <Router history={hashHistory}>
-        
-        <Route path="/" component={SignUp}>
-            <Route path="/home" component={Home}>
-                <Route path="/homenested" component={NestedHome}>
-                </Route>
-                <Route path="/aboutnested" component={NestedAbout}>
-                </Route>
-            </Route>
-            <Route path="/signup" component={SignUp}>
-            </Route>
-            <Route path="/login" component={Login}>
-            </Route>
+        <Route path="/home" component={Home}>
+            <Route path="/homenested" component={NestedHome}></Route>
+            <Route path="/aboutnested" component={NestedAbout}></Route>
         </Route>
 
-        
+        <Route path="/" component={App}>
+            <IndexRoute component={SignUp} />
+        </Route>
+
+
     </Router>
 ),
     document.getElementById('root')

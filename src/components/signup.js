@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ref, firebaseAuth } from '../helpers/auth'
-import { Router,  Link } from 'react-router';
+import { Router, Link } from 'react-router';
 import Home from './home';
 
 
@@ -71,6 +71,8 @@ class Form extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Register</button>
                 </form>
+
+                <Link to="/aboutnested">inz home</Link>
 
             </div>
         )
