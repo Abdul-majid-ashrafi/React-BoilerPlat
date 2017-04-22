@@ -1,31 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Home from './components/home';
-import SignUp from './components/signup';
-import Login from './components/login';
-import NestedHome from './components/homenestedroute';
-import NestedAbout from './components/aboutnestedroute';
-// import Nav from './components/nav.js';
-import './index.css';
-// import ReactRouter from 'react-router';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { AllRoutes } from './config/router'
+import * as firebase from 'firebase'
 
-ReactDOM.render((
-    <Router history={hashHistory}>
+var config = {
+  apiKey: "AIzaSyCXs2qMUazezjisKUS2ICNAKbasCkJdGDQ",
+  authDomain: "react-sample-17caa.firebaseapp.com",
+  databaseURL: "https://react-sample-17caa.firebaseio.com",
+  projectId: "react-sample-17caa",
+  storageBucket: "react-sample-17caa.appspot.com",
+  messagingSenderId: "411422279834"
+};
+firebase.initializeApp(config);
 
-        <Route path="/home" component={Home}>
-            <Route path="/homenested" component={NestedHome}></Route>
-            <Route path="/aboutnested" component={NestedAbout}></Route>
-        </Route>
-
-        <Route path="/login" component={Login}></Route>
-        <Route path="/" component={App}>
-            <IndexRoute component={SignUp} />
-        </Route>
-
-
-    </Router>
-),
-    document.getElementById('root')
+ReactDOM.render(
+  <AllRoutes />,
+  document.getElementById('root')
 );
